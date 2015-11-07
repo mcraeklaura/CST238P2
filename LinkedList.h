@@ -17,6 +17,7 @@ public:
 	void erase(ElementType item);
 	void traverse();
 	void display(ostream & out) const;
+	bool empty();
 
 	/////Project 2 Functions/////
 	int count(int num) const;
@@ -24,6 +25,7 @@ public:
 	ElementType Pop();	//Deletes the top number and returns it, if empty, say empty
 	void duplicates(); //Deletes all duplicates in a list
 	void Append(LinkedList a);
+	void Duplicates();
 
 private:
 	class Node
