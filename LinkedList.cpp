@@ -131,11 +131,15 @@ void LinkedList::display(ostream & out) const
 	}
 }
 
+bool LinkedList::empty(){
+	return (mySize == 0);
+}
+
 ///////////////////////////////////////////Project 2 Functions
 //	1.	//
 int LinkedList::count(int num) const{
 	if (mySize == 0){
-		cout <<"Your list is empty" << endl;
+		cout << "Your list is empty" << endl;
 		return NULL;
 	}
 	else{
@@ -157,7 +161,6 @@ ElementType LinkedList::GetNth(int position) const{
 		return NULL;
 	}
 	else if (mySize <= position || position < 0){
-		cout << "Invalid Position. :)" << endl;
 		return NULL;
 	}
 	else{
@@ -180,7 +183,7 @@ ElementType LinkedList::Pop(){
 		return ptr->data;
 	}
 
-	
+
 
 	first = ptr->next;
 
@@ -194,8 +197,9 @@ ElementType LinkedList::Pop(){
 
 void LinkedList::Append(LinkedList a){
 	Node * ptr = first;
-	if (mySize == 0){
+	if (mySize == 0 || a.empty()){
 		cout << "Error: Your list is empty. Nothing was appended." << endl;
+		return;
 	}
 	else{
 		for (int i = 0; i < mySize; i++){
@@ -209,5 +213,39 @@ void LinkedList::Append(LinkedList a){
 			insert(a.GetNth(x), i);
 			x++; i++;
 		}
+	}
+	return;
+}
+
+void LinkedList::Duplicates(){
+	if (mySize == 0){
+		cout << "Error: Your list is empty." << endl;
+		return;
+	}
+	else if (mySize == 1){
+		return;
+	}
+	
+	Node * ptr = first;
+	Node * dupl = ptr->next;
+	Node * movetmp = first;
+
+	for (int i = 0; i < (mySize - 1); i++){
+		for (int y = 1; y < mySize; y++){
+			if (dupl->next == NULL)
+				break;
+			if (ptr->data == dupl->data){
+				movetmp = first;
+				for (int z = 0; z < (y-1); z++){
+					movetmp = movetmp->next;
+				}
+				movetmp->next = dupl->next;
+				dupl = movetmp;
+				mySize--;
+			}
+			dupl = dupl->next;
+		}
+		ptr = ptr->next;
+		dupl = ptr->next;
 	}
 }
