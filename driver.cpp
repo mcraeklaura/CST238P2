@@ -49,7 +49,7 @@ int main()
 
 	// Testing No.4 /////////////////////////////////////////////////////////////////////////////////
 	cout << "//////////////////// Testing No.4 ////////////////////" << endl;
-	LinkedList foura, fourb;
+	LinkedList foura, fourb, four_empty;
 	foura.insert(1, 0), foura.insert(2, 1), foura.insert(3, 2), foura.insert(4, 3);
 	fourb.insert(5, 0), fourb.insert(6, 1), fourb.insert(7, 2), fourb.insert(8, 3);
 
@@ -57,8 +57,38 @@ int main()
 	foura.display(cout);
 	foura.Append(fourb);
 
-	cout << "foura after append: " << endl;
+	cout << endl << "foura after append: " << endl;
 	foura.display(cout);
+	cout << endl << endl;
+
+	//Testing an empty array
+	cout << "Testing an empty array..." << endl;
+	foura.Append(four_empty);
+	cout << endl << endl;
+
+
+	// Testing No.5 /////////////////////////////////////////////////////////////////////////////////
+	LinkedList five_empty, five_one, five_full;
+	five_one.insert(1, 0);
+	five_full.insert(1, 0), five_full.insert(2, 1), five_full.insert(3, 2), five_full.insert(1, 3), five_full.insert(4, 4);
+
+	//Testing one
+	cout << "Testing with one item: ";
+	five_one.Duplicates();
+	five_one.display(cout);
+	cout << endl;
+
+	//Testing empty
+	cout << "Testing empty list: ";
+	five_empty.Duplicates();
+	five_empty.display(cout);
+	cout << endl;
+
+	//Testing full
+	cout << "Testing a full list: ";
+	five_full.Duplicates();
+	five_full.display(cout);
+	cout << endl << endl;
 
 	return 0;
 }
